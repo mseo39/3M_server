@@ -7,7 +7,7 @@ class Member(models.Model):
     ResidentRegistration = models.CharField(max_length=13)
     ResidentialArea = models.CharField(max_length=13)
     PhoneNumbe = models.IntegerField
-    MenberID = models.CharField(max_length=6)
+    MenberID = models.CharField(max_length=10)
     Password = models.CharField(max_length=100)
     Age = models.IntegerField
     CarNumber = models.IntegerField
