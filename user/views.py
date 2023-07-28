@@ -15,24 +15,21 @@ from user.serializers import MemberSerializers
 @api_view(['POST'])
 def signup(request):
     if request.method=='POST':
-        if request.POST["Password"]==request.POST["ConfirmPassword"]:
-            data={}
-            for i in request.data:
-                if i=="Password":
-                    data[i]=bcrypt.hashpw(request.POST["Password"].encode("UTF-8"), bcrypt.gensalt()).decode("UTF-8")
-                elif i in ("ResidentRegistration", "PhoneNumber","Age"):
-                    data[i]=int(request.POST[i])
-                elif i=="ConfirmPassword":
-                    continue
-                else:
-                    data[i]=request.POST[i]
-            serializer = MemberSerializers(data=data)
-            if serializer.is_valid():
-                serializer.save()
+        data={}
+        for i in request.data:
+            if i=="Password":
+                data[i]=bcrypt.hashpw(request.POST["Password"].encode("UTF-8"), bcrypt.gensalt()).decode("UTF-8")
+            elif i in ("ResidentRegistration", "PhoneNumber","Age"):
+                data[i]=int(request.POST[i])
             else:
-                print(serializer.errors)
-                return JsonResponse({'message': 'error'}, status=status.HTTP_400_BAD_REQUEST)
-            return JsonResponse({'message':"successfully"}, status=status.HTTP_201_CREATED) 
+                data[i]=request.POST[i]
+        serializer = MemberSerializers(data=data)
+        if serializer.is_valid():
+            serializer.save()
+        else:
+            print(serializer.errors)
+            return JsonResponse({'message': 'error'}, status=status.HTTP_400_BAD_REQUEST)
+        return JsonResponse({'message':"successfully"}, status=status.HTTP_201_CREATED) 
     return JsonResponse({'message': 'error'}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
