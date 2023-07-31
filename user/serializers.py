@@ -5,3 +5,8 @@ class MemberSerializers(serializers.ModelSerializer):
     class Meta:
         model=Member
         fields='__all__'
+
+class CarListSerializers(serializers.ModelSerializer):
+    class Meta:
+        model=CarList
+        fields='__all__'
