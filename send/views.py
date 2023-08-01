@@ -14,7 +14,7 @@ def Data(request):
         dataset = {}
         for i in request.data:
             dataset[i] = request.data[i]
-        serializer = CarListSerializers
+        serializer = CarListSerializers(data=dataset)
         if serializer.is_valid():
             serializer.save()
         else:
