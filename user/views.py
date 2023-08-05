@@ -9,6 +9,8 @@ from django.http import HttpResponse,JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework import status
 from user.serializers import MemberSerializers
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 
@@ -50,7 +52,8 @@ def useridcheck(request):
     return JsonResponse({'message': 'error'}, status=status.HTTP_400_BAD_REQUEST) # 아니면 에러 메세지 출력
 
 # 회원탈퇴 API
-@api_view
+@method_decorator(csrf_exempt, name='dispatch')
+@api_view(['POST'])
 def delete(request):
     if Member.objects.filter(MenberID=request.POST["MemberID"]).exists(): # 클라이언트가 회원 데이터베이스와 부합하는 ID 값을 보낸 경우
         user=Member.objects.get(MenberID=request.POST["MemberID"]) # 데이터베이스에서 해당 회원을 불러옴

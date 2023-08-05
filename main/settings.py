@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'user',
-    'rest_framework'
+    'rest_framework',
+    'send'
 ]
 
 MIDDLEWARE = [
@@ -83,8 +84,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': '3m',
-        'USER': 'root',
-        'PASSWORD':'1234',
+        'USER': 'sch_3m',
+        'PASSWORD':'mseojay3m',
         'HOST':'localhost',
         'PORT':'3306'
     }
