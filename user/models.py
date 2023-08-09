@@ -12,6 +12,7 @@ class Member(models.Model):
     Age = models.IntegerField
     CarNumber = models.IntegerField
     BankAccount = models.CharField(max_length=16)
+    fcm_token = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         db_table = 'Member'

@@ -28,8 +28,17 @@ SECRET_KEY = 'django-insecure-7vqozobc5ck$e-vvk)0(nh9n&twuw4c!i9rit5-ej9e4dfgq$8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = ['10.0.2.2', 'localhost', '127.0.0.1']
+
+#fcm알림보내기
+import firebase_admin
+from firebase_admin import credentials
+import os
+
+cred_path = os.path.join(BASE_DIR, "sch3m-6c44f-firebase-adminsdk-zmnqh-8f14d97aaf.json")
+cred = credentials.Certificate(cred_path)
+firebase_admin.initialize_app(cred)
 
 # Application definition
 
@@ -43,7 +52,9 @@ INSTALLED_APPS = [
     'home',
     'user',
     'rest_framework',
-    'send'
+    'send',
+    'push_notification',
+    'sslserver'
 ]
 
 MIDDLEWARE = [
