@@ -7,7 +7,7 @@ class Member(models.Model):
     ResidentRegistration = models.CharField(max_length=13)
     ResidentialArea = models.CharField(max_length=13)
     PhoneNumbe = models.IntegerField
-    MenberID = models.CharField(max_length=10)
+    MemberID = models.CharField(max_length=10)
     Password = models.CharField(max_length=100)
     Age = models.IntegerField
     CarNumber = models.IntegerField
@@ -27,7 +27,7 @@ class CarList(models.Model):
     Longitube= models.DecimalField(max_digits=18, decimal_places=10)
     CarNum = models.CharField(max_length=8)
     UniqueNumber=models.ForeignKey(Member, related_name="carlist_UniqueNumber", on_delete=models.CASCADE)
-    MenberID = models.CharField(max_length=6)
+    MemberID = models.CharField(max_length=6)
     ReportStatus = models.CharField(max_length=1, choices=status)
 
     class Meta:
