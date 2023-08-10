@@ -21,8 +21,8 @@ def Data(request):
         else:
             print(serializer.errors)
             return JsonResponse({'message': 'error'}, status=status.HTTP_400_BAD_REQUEST)
-        if CarList.objects.filter(CarNum=request.POST["CarNum"], Date__lte=timezone.now()-timedelta(minutes=5)).exists():
-            recent_5min=CarList.objects.get(CarNum=request.POST["CarNum"], Date__lte=timezone.now()-timedelta(minutes=5))
+        if CarList.objects.filter(CarNum=request.data["CarNum"], Date__lte=timezone.now()-timedelta(minutes=5)).exists():
+            recent_5min=CarList.objects.get(CarNum=request.data["CarNum"], Date__lte=timezone.now()-timedelta(minutes=5))
             if recent_5min:
                 return JsonResponse({'message':"5분 이내 같은 차량 데이터가 존재합니다."})
             else:

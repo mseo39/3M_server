@@ -22,7 +22,7 @@ class CarList(models.Model):
         ('T', 'true'),
         ('F','false')
     )
-    Date = models.DateTimeField
+    Date = models.DateTimeField( blank=True, null=True)
     Latitude= models.DecimalField(max_digits=18, decimal_places=10)
     Longitube= models.DecimalField(max_digits=18, decimal_places=10)
     CarNum = models.CharField(max_length=8)
@@ -34,8 +34,8 @@ class CarList(models.Model):
         db_table = 'CarList'
 
 class ReportList(models.Model):
-    BeforeDate= models.DateTimeField
-    AfterDate = models.DateTimeField
+    BeforeDate= models.DateTimeField(blank=True, null=True)
+    AfterDate = models.DateTimeField(blank=True, null=True)
     CarNum = models.CharField(max_length=8)
     BeforeUniqueNumber=models.ForeignKey(Member, related_name="before_UniqueNumber", on_delete=models.CASCADE)
     AfterUniqueNumber=models.ForeignKey(Member, related_name="after_UniqueNumber", on_delete=models.CASCADE)
