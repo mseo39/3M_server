@@ -10,3 +10,8 @@ class CarListSerializers(serializers.ModelSerializer):
     class Meta:
         model=CarList
         fields='__all__'
+
+class ReportListSerializers(serializers.ModelSerializer):
+    class Meta:
+        model=ReportList
+        fields='__all__'

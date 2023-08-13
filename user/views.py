@@ -31,7 +31,7 @@ def signup(request):
         serializer = MemberSerializers(data=data)  # data 딕셔너리로 시리얼라이저 객체 생성
         if serializer.is_valid():  # 시리얼라이저 유효성 검사
             serializer.save()  # 유효하면 회원정보 저장
-            return JsonResponse({'message': "successfully"}, status=status.HTTP_201_CREATED)
+            return JsonResponse({'message': "회원가입이 성공적으로 완료되었습니다."}, status=status.HTTP_201_CREATED)
         else:
             print(serializer.errors)  # 유효하지 않을 경우 에러메세지 출력
             return JsonResponse({'message': 'error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
@@ -63,8 +63,8 @@ def signin(request):
     if Member.objects.filter(MemberID=request.data["MemberID"]).exists():  # 수정된 부분
         user = Member.objects.get(MemberID=request.data["MemberID"])  # 수정된 부분
         if bcrypt.checkpw(request.data['Password'].encode('UTF-8'), user.Password.encode('UTF-8')) == True:
-            return JsonResponse({'message': "successfully"}, status=status.HTTP_200_OK)
-    return JsonResponse({'message': 'error'}, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({'message': "로그인에 성공했습니다."}, status=status.HTTP_200_OK)
+    return JsonResponse({'message': '아이디나 비밀번호가 올바르지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 # 사용자 ID 체크 API
@@ -83,7 +83,7 @@ def delete(request):
         user = Member.objects.get(MemberID=request.data["MemberID"])  # 수정된 부분
         if bcrypt.checkpw(request.data['Password'].encode('UTF-8'), user.Password.encode('UTF-8')) == True:
             Member.objects.get(MemberID=request.data["MemberID"]).delete()
-            return JsonResponse({'message': "successfully"}, status=status.HTTP_200_OK)
+            return JsonResponse({'message': "회원 탈퇴가 성공적으로 완료되었습니다. 이용해주셔서 감사합니다."}, status=status.HTTP_200_OK)
         else:
-            return JsonResponse({'message': 'error'}, status=status.HTTP_400_BAD_REQUEST)
-    return JsonResponse({'message': 'error'}, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({'message': '비밀번호가 올바르지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+    return JsonResponse({'message': '아이디가 올바르지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)
