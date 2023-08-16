@@ -11,6 +11,7 @@ import pytz
 # 데이터 업로드 API
 @api_view(['POST'])
 def Data(request):
+    #UnboundLocalError: local variable 'recent_5min' referenced before assignment 에러발생
     recent_5min=None
     if request.method == 'POST':
         if CarList.objects.filter(CarNum=request.data["CarNum"], ReportStatus='F').exists():

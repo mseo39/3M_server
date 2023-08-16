@@ -26,6 +26,7 @@ class CarList(models.Model):
     Latitude= models.DecimalField(max_digits=18, decimal_places=10)
     Longitube= models.DecimalField(max_digits=18, decimal_places=10)
     CarNum = models.CharField(max_length=8)
+    UniqueNumber=models.CharField(max_length=12 ,blank=True, null=True)
     MemberID = models.CharField(max_length=6)
     ReportStatus = models.CharField(max_length=1, choices=status)
 
@@ -36,8 +37,8 @@ class ReportList(models.Model):
     BeforeDate= models.DateTimeField(blank=True, null=True)
     AfterDate = models.DateTimeField(blank=True, null=True)
     CarNum = models.CharField(max_length=8)
-    BeforeUniqueNumber=models.ForeignKey(Member, related_name="before_UniqueNumber", on_delete=models.CASCADE)
-    AfterUniqueNumber=models.ForeignKey(Member, related_name="after_UniqueNumber", on_delete=models.CASCADE)
+    BeforeUniqueNumber=models.CharField(max_length=12,blank=True, null=True)
+    AfterUniqueNumber=models.CharField(max_length=12,blank=True, null=True)
 
     class Meta:
         db_table = 'ReportList'
