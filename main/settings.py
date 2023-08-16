@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'user',
     'rest_framework',
     'send',
-    'push_notification',
     'sslserver'
 ]
 

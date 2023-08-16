@@ -26,7 +26,6 @@ class CarList(models.Model):
     Latitude= models.DecimalField(max_digits=18, decimal_places=10)
     Longitube= models.DecimalField(max_digits=18, decimal_places=10)
     CarNum = models.CharField(max_length=8)
-    UniqueNumber=models.ForeignKey(Member, related_name="carlist_UniqueNumber", on_delete=models.CASCADE)
     MemberID = models.CharField(max_length=6)
     ReportStatus = models.CharField(max_length=1, choices=status)
 
