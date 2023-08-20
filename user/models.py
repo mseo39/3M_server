@@ -33,6 +33,9 @@ class CarList(models.Model):
     class Meta:
         db_table = 'CarList'
 
+    def __str__(self):
+        return str(self.Date) +" "+str(self.CarNum)
+
 class ReportList(models.Model):
     BeforeDate= models.DateTimeField(blank=True, null=True)
     AfterDate = models.DateTimeField(blank=True, null=True)
@@ -44,3 +47,6 @@ class ReportList(models.Model):
 
     class Meta:
         db_table = 'ReportList'
+
+    def __str__(self):
+        return str(self.CarNum)
