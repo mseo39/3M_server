@@ -39,6 +39,8 @@ class ReportList(models.Model):
     CarNum = models.CharField(max_length=8)
     BeforeUniqueNumber=models.CharField(max_length=12,blank=True, null=True)
     AfterUniqueNumber=models.CharField(max_length=12,blank=True, null=True)
+    Beforeimage= models.ImageField(upload_to="carimg",blank=True, null=True)
+    Afterimage= models.ImageField(upload_to="carimg",blank=True, null=True)
 
     class Meta:
         db_table = 'ReportList'

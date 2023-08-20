@@ -28,7 +28,6 @@ SECRET_KEY = 'django-insecure-7vqozobc5ck$e-vvk)0(nh9n&twuw4c!i9rit5-ej9e4dfgq$8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
 ALLOWED_HOSTS = ['10.0.2.2', 'localhost', '127.0.0.1']
 
 #fcm알림보내기
@@ -136,9 +135,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#static
+STATIC_URL = '/static/'
+
+#static 파일들이 들어있는 경로
+#main이라는 앱폴더 안에 있는 static폴더에 static 파일들을 저장했다는 것을 알려준다
+STATIC_DIRS =[
+    os.path.join(BASE_DIR, 'main', 'static') 
+]
+
+#static 파일을 모을 디렉터리
+#static폴더에 static 파일을 모을 것임을 알려준다
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

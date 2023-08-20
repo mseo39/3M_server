@@ -35,7 +35,7 @@ def Data(request):
 
                 # 거리 계산
                 #print(haversine(current, new, unit = 'm'))
-                if haversine(current, new, unit = 'm')<=4.0:
+                if haversine(current, new, unit = 'm')<=1.75:
                     recent_5min.ReportStatus = 'T' 
                     recent_5min.save()
                     data = {
