@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'user',
     'rest_framework',
     'send',
-    'sslserver'
+    'sslserver',
+    'reportcheck'
 ]
 
 MIDDLEWARE = [
