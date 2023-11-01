@@ -27,7 +27,8 @@ def signup(request):
                 data[i] = int(request.data[i])  # i값을 정수 변환 후 딕셔너리에 저장
             else:  # 그 외의 경우(이름, 주거지, ID, 계좌번호)
                 data[i] = request.data[i]  # 딕셔너리에 저장
-        
+                
+        data["fcm_token"]=""
         serializer = MemberSerializers(data=data)  # data 딕셔너리로 시리얼라이저 객체 생성
         if serializer.is_valid():  # 시리얼라이저 유효성 검사
             serializer.save()  # 유효하면 회원정보 저장
