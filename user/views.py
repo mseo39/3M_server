@@ -63,6 +63,9 @@ def signin(request):
     if Member.objects.filter(MemberID=request.data["MemberID"]).exists():  # 수정된 부분
         user = Member.objects.get(MemberID=request.data["MemberID"])  # 수정된 부분
         if bcrypt.checkpw(request.data['Password'].encode('UTF-8'), user.Password.encode('UTF-8')) == True:
+            member = Member.objects.get(MemberID=request.data["MemberID"])
+            member.fcm_token = request.data["fcm_token"]
+            member.save()
             return JsonResponse({'message': "successfully"}, status=status.HTTP_200_OK)
     return JsonResponse({'message': 'error'}, status=status.HTTP_400_BAD_REQUEST)
 
